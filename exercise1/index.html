@@ -14,16 +14,15 @@
         <form class="formulario" onsubmit="salvarUsuario(event)">
             <div class="campos-formulario">
                 <h2 class="form-title">Usuário</h1>
-                <input type="username" id="usuario-campo">
+                <input type="username" id="usuario-campo" required>
             </div>
             <div class="campos-formulario">
                 <h2 class="form-title">Email</h1>
-                <input type="mail" id="email-campo">
+                <input type="email" id="email-campo" required>
             </div>
             <button type="submit">Enviar</button>
         </form>
-        <div class="exibicao-usuarios">
-        </div>
+        <div id="lista"></div>
     </div>
 
     <script src="script.js"></script>
