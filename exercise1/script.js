@@ -27,7 +27,7 @@ function mostrarUsuarios() {
                 <span>
           ${bancoDeDados[i].email}
         </span>
-        <button onclick="remover(${i})">
+        <button class="buttonUsuario" onclick="remover(${i})">
           Excluir
         </button>
       </div>

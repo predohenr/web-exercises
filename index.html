@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Web Exercises</title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <aside class="sidebar">
+            <h1>Exercícios</h1>
+            <button onclick="abrirExercicio('readme/index.html')">
+            Início
+            </button>
+            <button onclick="abrirExercicio('exercise1/index.html')">
+            Arrays e Objetos
+            </button>
+        </aside>
+        <main class="conteudo">
+            <iframe
+            id="viewer"
+            src="readme/index.html"
+            frameborder="0">
+            </iframe>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
