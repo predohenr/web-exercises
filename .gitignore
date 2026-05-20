@@ -1,0 +1,25 @@
+#dependencies
+node_modules/
+
+#environment variables
+.env
+.env.local
+.env.*.local
+
+#logs
+*.log
+npm-debug.log*
+
+#os-generated files
+.DS_Store
+Thumbs.db
+
+#archives
+*.zip
+*.tar.gz
+
+#internal files
+.cache/
+.local/
+.agents/
+.config/

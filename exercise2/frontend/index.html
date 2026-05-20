@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercício 2</title>
+</head>
+<body>
+    <div class="aviso-github">
+        <strong>Esta página não funciona no GitHub Pages.</strong>
+        Este projeto requer um servidor backend com banco de dados e não pode ser executado como uma página estática.
+        <br><br>
+        Para rodar localmente, você precisa:
+        <ol>
+            <li>Instalar o <a href="https://nodejs.org" target="_blank">Node.js</a></li>
+            <li>Criar um banco de dados no <a href="https://neon.tech" target="_blank">Neon</a> e copiar a connection string</li>
+            <li>Criar um arquivo <code>.env</code> na pasta <code>backend/</code> com: <code>NEON_URL=sua_connection_string</code></li>
+            <li>Rodar <code>npm install</code> e depois <code>node server.js</code> dentro da pasta <code>backend/</code></li>
+            <li>Abrir o arquivo <code>frontend/index.html</code> no navegador</li>
+        </ol>
+    </div>
+
+    <div class="conteudo-central">
+        <h1>Atividade 2 - Formulário com Backend</h1>
+
+        <form class="formulario" id="form" onsubmit="enviarFormulario(event)">
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="campo">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="campo">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" placeholder="Escreva sua mensagem..." rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="resposta"></div>
+
+        <div id="lista"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
