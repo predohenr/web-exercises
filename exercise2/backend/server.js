@@ -1,10 +1,7 @@
 const express = require("express");
 const { Pool } = require("pg");
 
-const pool = new Pool({
-    connectionString: process.env.NEON_URL,
-    ssl: process.env.NEON_URL ? { rejectUnauthorized: false } : false
-});
+const pool = new Pool({ connectionString: process.env.NEON_URL, ssl: { rejectUnauthorized: false } });
 const app = express();
 
 app.use(express.json());
@@ -28,6 +25,20 @@ app.post("/api/contato", async (req, res) => {
 app.get("/api/contatos", async (req, res) => {
     const r = await pool.query("SELECT * FROM contatos ORDER BY criado_em DESC");
     res.json(r.rows);
+});
+
+app.put("/api/contato/:id", async (req, res) => {
+    const { nome, email, mensagem } = req.body;
+    if (!nome || !email || !mensagem) return res.status(400).json({ erro: "Todos os campos são obrigatórios." });
+    const r = await pool.query("UPDATE contatos SET nome=$1, email=$2, mensagem=$3 WHERE id=$4 RETURNING *", [nome, email, mensagem, req.params.id]);
+    if (r.rowCount === 0) return res.status(404).json({ erro: "Contato não encontrado." });
+    res.json({ sucesso: true, contato: r.rows[0] });
+});
+
+app.delete("/api/contato/:id", async (req, res) => {
+    const r = await pool.query("DELETE FROM contatos WHERE id=$1 RETURNING *", [req.params.id]);
+    if (r.rowCount === 0) return res.status(404).json({ erro: "Contato não encontrado." });
+    res.json({ sucesso: true });
 });
 
 app.listen(5000, "0.0.0.0", () => console.log("Servidor rodando na porta 5000"));
